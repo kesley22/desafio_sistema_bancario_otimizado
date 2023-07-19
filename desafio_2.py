@@ -1,15 +1,16 @@
 def menu():
-    menus = """\n
+    menu_inical = """\n
     ----------MENU----------
     [1]\tDepositar
-    [2]\tExtrato
-    [3]\tSacar
+    [2]\tSacar
+    [3]\tExtrato
     [4]\tNova conta
     [5]\tNovo usuário
     [6]\tListar contas
     [0]\tSair
     """
-    print(input(menus))
+    return input(menu_inical)
+
 
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
@@ -22,10 +23,10 @@ def depositar(saldo, valor, extrato, /):
     return saldo, extrato
 
 
-def sacar(*, saldo, valor, extrato, limite, numero_saque, limite_saque):
+def sacar(*, saldo, valor, extrato, limite, numeros_saques, limite_saque):
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
-    excedeu_saques = numero_saque > limite_saque
+    excedeu_saques = numeros_saques > limite_saque
 
     if excedeu_saldo:
         print("Operação falhou! Você não tem saldo suficiente.")
@@ -65,11 +66,9 @@ def criar_usuario(usuarios):
 
     nome = input("Informe o nome completo: ")
     data_nascimento = input("Informe a data de nascimento: ")
-    endereco = input(
-        "Informe o endereço (logradouro, nº - bairro - cidade/sigla estado):")
+    endereco = input("Informe o endereço (logradouro, nº - bairro - cidade/sigla estado): ")
 
-    usuarios.append({"nome": nome, "data_nascimento": data_nascimento,
-                    "CPF": cpf, "endereço": endereco})
+    usuarios.append({"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco})
 
     print("----USUÁRIO CADASTRADO COM SUCESSO!----")
 
